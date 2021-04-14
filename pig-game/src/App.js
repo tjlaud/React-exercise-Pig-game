@@ -1,5 +1,6 @@
 import "./App.css";
 import PlayerPanel from "./components/PlayerPanel";
+import Dice from "./components/Dice";
 
 function App() {
   return (
@@ -11,6 +12,8 @@ function App() {
         <h1>Pig Game</h1>
         <PlayerPanel playerNumber="1" />
         <PlayerPanel playerNumber="2" />
+        <Dice />
+        <Dice />
       </div>
     </div>
   );
