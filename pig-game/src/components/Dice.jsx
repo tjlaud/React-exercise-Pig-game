@@ -8,9 +8,11 @@ import die5 from "../images/dice-5.png";
 import die6 from "../images/dice-6.png";
 
 function Dice(props) {
-  const handleChange = (dieNumber) => {
-    let dieString = "die" + String(dieNumber);
-    console.log(dieString);
+  const dieObject = ["empty", die1, die2, die3, die4, die5, die6];
+
+  const handleChange = (objectNumber) => {
+    Number(objectNumber);
+    return dieObject[objectNumber];
   };
 
   return (
@@ -19,3 +21,6 @@ function Dice(props) {
 }
 
 export default Dice;
+
+// console.log(dieString);
+// console.log(typeof dieString);

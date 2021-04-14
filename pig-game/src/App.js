@@ -12,7 +12,7 @@ function App() {
   // Game playing?
 
   const rollFunction = () => {
-    setDieNumber = Math.floor(Math.random() * 6) + 1;
+    setDieNumber(Math.floor(Math.random() * 6) + 1);
   };
 
   return (
