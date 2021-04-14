@@ -8,7 +8,14 @@ import die5 from "../images/dice-5.png";
 import die6 from "../images/dice-6.png";
 
 function Dice(props) {
-  return <img src={die1} alt="Dice" class="dice" />;
+  const handleChange = (dieNumber) => {
+    let dieString = "die" + String(dieNumber);
+    console.log(dieString);
+  };
+
+  return (
+    <img src={handleChange(props.dieNumber)} alt="Dice" className="dice" />
+  );
 }
 
 export default Dice;
