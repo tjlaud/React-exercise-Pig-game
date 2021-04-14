@@ -4,7 +4,9 @@ import PlayerPanel from "./components/PlayerPanel";
 import Dice from "./components/Dice";
 
 function App() {
-  const [dieNumber, setDieNumber] = useState(1);
+  const [dieNumber1, setDieNumber1] = useState(1);
+  const [dieNumber2, setDieNumber2] = useState(1);
+
   // Die rolling function
   // Scores
   // Round score
@@ -12,7 +14,8 @@ function App() {
   // Game playing?
 
   const rollFunction = () => {
-    setDieNumber(Math.floor(Math.random() * 6) + 1);
+    setDieNumber1(Math.floor(Math.random() * 6) + 1);
+    setDieNumber2(Math.floor(Math.random() * 6) + 1);
   };
 
   return (
@@ -26,7 +29,8 @@ function App() {
         <h1>Pig Game</h1>
         <PlayerPanel playerNumber="1" />
         <PlayerPanel playerNumber="2" />
-        <Dice dieNumber={dieNumber} />
+        <Dice dieNumber={dieNumber1} />
+        <Dice dieNumber={dieNumber2} />
       </div>
     </div>
   );
