@@ -22,15 +22,16 @@ function App() {
     <div className="App">
       <div className="wrapper">
         <button className="btn-new">New game</button>
-        <button className="btn-roll" onClick={rollFunction}>
-          Roll dice
-        </button>
-        <button className="btn-hold">Hold</button>
         <h1>Pig Game</h1>
         <PlayerPanel playerNumber="1" />
         <PlayerPanel playerNumber="2" />
         <Dice dieNumber={dieNumber1} />
         <Dice dieNumber={dieNumber2} />
+        <br />
+        <button className="btn-roll" onClick={rollFunction}>
+          Roll dice
+        </button>
+        <button className="btn-hold">Hold</button>
       </div>
     </div>
   );
