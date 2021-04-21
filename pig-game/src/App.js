@@ -7,12 +7,12 @@ function App() {
   const [dieNumber1, setDieNumber1] = useState(2);
   const [dieNumber2, setDieNumber2] = useState(2);
   const [currentScore, setCurrentScore] = useState(0);
+  const [totalScore1, setTotalScore1] = useState(0);
+  const [totalScore2, setTotalScore2] = useState(0);
   const [activePlayerOne, setActivePlayerOne] = useState(true);
 
-  // For next lesson:
-  // Active player is working.
+  // ************************** To do **************************
   // Current score still display the last roll NOT the current :(
-  // The current score needs reseting to 0 on a change of player.
   // Hold button implementation.
 
   // Scores
@@ -29,23 +29,39 @@ function App() {
   const rollFunction = () => {
     setDieNumber1(Math.floor(Math.random() * 6) + 1);
     setDieNumber2(Math.floor(Math.random() * 6) + 1);
-    console.log(dieNumber2);
+    console.log(dieNumber1 + dieNumber2);
 
+    // Update current score
     if (dieNumber1 !== 1 && dieNumber2 !== 1) {
       setCurrentScore(currentScore + dieNumber1 + dieNumber2);
     } else {
       nextPlayer();
-      // next player function
-      // console.log("next player");
+      setCurrentScore(0);
     }
   };
 
+  // Switch to next player function
   const nextPlayer = () => {
     setActivePlayerOne(!activePlayerOne);
+    setCurrentScore(0);
     console.log(activePlayerOne);
   };
-  // Current Score
 
+  // Hold button function
+  const holdFunction = () => {
+    activePlayerOne
+      ? setTotalScore1(currentScore + totalScore1)
+      : setTotalScore2(currentScore + totalScore2);
+    nextPlayer();
+    // Win function
+    if (totalScore1 || totalScore2 > 30) {
+      // set game playing to false
+      // create win state
+      console.log("winner");
+    }
+  };
+
+  // Return the HTML
   return (
     <div className="App">
       <div className="wrapper">
@@ -54,10 +70,12 @@ function App() {
         <PlayerPanel
           playerNumber="1"
           currentScore={activePlayerOne ? currentScore : null}
+          totalScore1={totalScore1}
         />
         <PlayerPanel
           playerNumber="2"
           currentScore={activePlayerOne ? null : currentScore}
+          totalScore2={totalScore2}
         />
         <Dice dieNumber={dieNumber1} />
         <Dice dieNumber={dieNumber2} />
@@ -65,7 +83,9 @@ function App() {
         <button className="btn-roll" onClick={rollFunction}>
           Roll dice
         </button>
-        <button className="btn-hold">Hold</button>
+        <button className="btn-hold" onClick={holdFunction}>
+          Hold
+        </button>
       </div>
     </div>
   );
