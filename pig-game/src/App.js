@@ -4,6 +4,8 @@ import PlayerPanel from "./components/PlayerPanel";
 import Dice from "./components/Dice";
 
 function App() {
+  // const [playerOneStyles, setPlayerOneStyles] = useState("playerOneBox");
+  // const [playerTwoStyles, setPlayerTwoStyles] = useState("playerTwoBox");
   const [dieNumber1, setDieNumber1] = useState(2);
   const [dieNumber2, setDieNumber2] = useState(2);
   const [currentScore, setCurrentScore] = useState(0);
@@ -13,6 +15,7 @@ function App() {
 
   // ************************** To do **************************
   // Current score still display the last roll NOT the current :(
+  // React vs CSS
 
   // Scores
   // Round score
@@ -68,11 +71,13 @@ function App() {
         <h1>Pig Game</h1>
         <PlayerPanel
           playerNumber="1"
+          activePlayerStyles={activePlayerOne}
           currentScore={activePlayerOne ? currentScore : null}
           totalScore1={totalScore1}
         />
         <PlayerPanel
           playerNumber="2"
+          activePlayerStyles={activePlayerOne}
           currentScore={activePlayerOne ? null : currentScore}
           totalScore2={totalScore2}
         />
