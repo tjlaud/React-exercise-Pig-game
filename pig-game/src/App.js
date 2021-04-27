@@ -13,7 +13,6 @@ function App() {
 
   // ************************** To do **************************
   // Current score still display the last roll NOT the current :(
-  // Hold button implementation.
 
   // Scores
   // Round score
