@@ -66,23 +66,25 @@ function App() {
   // Return the HTML
   return (
     <div className="App">
-      <div className="wrapper">
+      <div className="gameBox">
         <button className="btn-new">New game</button>
         <h1>Pig Game</h1>
-        <PlayerPanel
-          playerNumber="1"
-          activePlayerStyles={activePlayerOne}
-          currentScore={activePlayerOne ? currentScore : null}
-          totalScore1={totalScore1}
-        />
-        <PlayerPanel
-          playerNumber="2"
-          activePlayerStyles={activePlayerOne}
-          currentScore={activePlayerOne ? null : currentScore}
-          totalScore2={totalScore2}
-        />
-        <Dice dieNumber={dieNumber1} />
-        <Dice dieNumber={dieNumber2} />
+        <div className="rollingScoreBox">
+          <PlayerPanel
+            playerNumber="1"
+            activePlayerStyles={activePlayerOne}
+            currentScore={activePlayerOne ? currentScore : null}
+            totalScore1={totalScore1}
+          />
+          <Dice dieNumber={dieNumber1} />
+          <Dice dieNumber={dieNumber2} />
+          <PlayerPanel
+            playerNumber="2"
+            activePlayerStyles={!activePlayerOne}
+            currentScore={activePlayerOne ? null : currentScore}
+            totalScore2={totalScore2}
+          />
+        </div>
         <br />
         <button className="btn-roll" onClick={rollFunction}>
           Roll dice
