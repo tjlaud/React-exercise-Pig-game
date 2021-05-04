@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1em;
   margin: auto;
   margin-top: 5vh;
   background-color: #fff;
@@ -9,6 +11,10 @@
   overflow: hidden;
   min-width: 300px;
   max-width: 90%;
+}
+
+h1 {
+  color: rgb(98, 98, 98);
 }
 
 .rollingScoreBox {
@@ -21,11 +27,30 @@
 .btn-roll,
 .btn-hold {
   background-color: rgb(231, 77, 77);
+  color: #fff;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1em;
   padding: 10px;
   margin: 10px;
   border-radius: 20px;
   border-style: none;
   box-shadow: 4px 4px 10px #2d252e4d;
+  transition-duration: 0.3s;
+}
+
+.btn-roll:active,
+.btn-hold:active,
+.btn-new:active {
+  box-shadow: 2px 2px 4px #2d252e4d;
+  transform: translateY(4px);
+}
+
+.btn-roll:hover,
+.btn-hold:hover,
+.btn-new:hover {
+  cursor: pointer;
+  background-color: rgb(255, 255, 255);
+  color: rgb(231, 77, 77);
 }
 
 .dice {
@@ -36,7 +61,7 @@
   padding: 20px;
   width: 140px;
   height: 140px;
-  border-radius: 5px;
+  border-radius: 8px;
   box-shadow: 4px 4px 10px #2d252e4d;
 }
 
@@ -51,9 +76,11 @@
 }
 
 .playerBoxActive {
+  transition-duration: 0.3s;
   color: rgb(231, 77, 77);
 }
 
 .playerBoxInactive {
+  transition-duration: 0.5s;
   color: rgb(98, 98, 98);
 }
