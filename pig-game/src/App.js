@@ -12,6 +12,7 @@ function App() {
   const [totalScore1, setTotalScore1] = useState(0);
   const [totalScore2, setTotalScore2] = useState(0);
   const [activePlayerOne, setActivePlayerOne] = useState(true);
+  const [gamePlaying, setGamePlaying] = useState(false);
 
   // ************************** To do **************************
   // Current score still display the last roll NOT the current :(
@@ -22,23 +23,21 @@ function App() {
   // Active player
   // Game playing?
   // if game playing ? then allow the roll function and scores to work
-  // const newGame = () => {
-  //   setCurrentScore(0);
-  //   gamePlaying = !gamePlaying;
-  // };
 
   // Die rolling function
   const rollFunction = () => {
-    setDieNumber1(Math.floor(Math.random() * 6) + 1);
-    setDieNumber2(Math.floor(Math.random() * 6) + 1);
-    console.log(dieNumber1 + dieNumber2);
+    if (gamePlaying) {
+      setDieNumber1(Math.floor(Math.random() * 6) + 1);
+      setDieNumber2(Math.floor(Math.random() * 6) + 1);
+      console.log(dieNumber1 + dieNumber2);
 
-    // Update current score
-    if (dieNumber1 !== 1 && dieNumber2 !== 1) {
-      setCurrentScore(currentScore + dieNumber1 + dieNumber2);
-    } else {
-      nextPlayer();
-      setCurrentScore(0);
+      // Update current score
+      if (dieNumber1 !== 1 && dieNumber2 !== 1) {
+        setCurrentScore(currentScore + dieNumber1 + dieNumber2);
+      } else {
+        nextPlayer();
+        setCurrentScore(0);
+      }
     }
   };
 
@@ -51,23 +50,36 @@ function App() {
 
   // Hold button function
   const holdFunction = () => {
-    activePlayerOne
-      ? setTotalScore1(currentScore + totalScore1)
-      : setTotalScore2(currentScore + totalScore2);
-    nextPlayer();
-    // Win function
-    if (totalScore1 || totalScore2 > 30) {
-      // set game playing to false
-      // create win state
-      console.log("winner");
+    if (gamePlaying) {
+      activePlayerOne
+        ? setTotalScore1(currentScore + totalScore1)
+        : setTotalScore2(currentScore + totalScore2);
+      nextPlayer();
+      // Win function
+      if (totalScore1 || totalScore2 > 30) {
+        // set game playing to false
+        // create win state
+        console.log("winner");
+      }
     }
+  };
+
+  // New game function
+  const newGameFunction = () => {
+    setCurrentScore(0);
+    setActivePlayerOne(true);
+    setTotalScore1(0);
+    setTotalScore2(0);
+    setGamePlaying(true);
   };
 
   // Return the HTML
   return (
     <div className="App">
       <div className="gameBox">
-        <button className="btn-new">New game</button>
+        <button className="btn-new" onClick={newGameFunction}>
+          New game
+        </button>
         <h1>Pig Game</h1>
         <div className="rollingScoreBox">
           <PlayerPanel
