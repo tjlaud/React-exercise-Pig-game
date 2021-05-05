@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import PlayerPanel from "./components/PlayerPanel";
 import Dice from "./components/Dice";
+import RollandHold from "./components/RollandHold";
 
 function App() {
   // const [playerOneStyles, setPlayerOneStyles] = useState("playerOneBox");
@@ -13,6 +14,7 @@ function App() {
   const [totalScore2, setTotalScore2] = useState(0);
   const [activePlayerOne, setActivePlayerOne] = useState(true);
   const [gamePlaying, setGamePlaying] = useState(false);
+  const [rollAndHoldActive, setRollAndHoldActive] = useState(false);
 
   // ************************** To do **************************
   // Current score still display the last roll NOT the current :(
@@ -71,6 +73,7 @@ function App() {
     setTotalScore1(0);
     setTotalScore2(0);
     setGamePlaying(true);
+    setRollAndHoldActive(true);
   };
 
   // Return the HTML
@@ -97,13 +100,11 @@ function App() {
             totalScore2={totalScore2}
           />
         </div>
-        <br />
-        <button className="btn-roll" onClick={rollFunction}>
-          Roll dice
-        </button>
-        <button className="btn-hold" onClick={holdFunction}>
-          Hold
-        </button>
+        <RollandHold
+          rollAndHoldClass={rollAndHoldActive}
+          rollFunction={rollFunction}
+          holdFunction={holdFunction}
+        />
       </div>
     </div>
   );
