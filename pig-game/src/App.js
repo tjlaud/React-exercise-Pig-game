@@ -3,6 +3,7 @@ import "./App.css";
 import PlayerPanel from "./components/PlayerPanel";
 import Dice from "./components/Dice";
 import RollandHold from "./components/RollandHold";
+import Title from "./components/Title";
 
 function App() {
   // const [playerOneStyles, setPlayerOneStyles] = useState("playerOneBox");
@@ -15,16 +16,14 @@ function App() {
   const [activePlayerOne, setActivePlayerOne] = useState(true);
   const [gamePlaying, setGamePlaying] = useState(false);
   const [rollAndHoldActive, setRollAndHoldActive] = useState(false);
+  const [titleOrWin, setTitleOrWin] = useState(true);
+  const [subTitleActive, setSubTitleActive] = useState(true);
 
   // ************************** To do **************************
   // Current score still display the last roll NOT the current :(
-  // React vs CSS
 
-  // Scores
-  // Round score
-  // Active player
-  // Game playing?
-  // if game playing ? then allow the roll function and scores to work
+  // Title Component doesn't function yet. Sub title needs work.
+  // Win state text and class changes still require work.
 
   // Die rolling function
   const rollFunction = () => {
@@ -62,6 +61,7 @@ function App() {
         // set game playing to false
         // create win state
         console.log("winner");
+        setTitleOrWin(false);
       }
     }
   };
@@ -74,6 +74,8 @@ function App() {
     setTotalScore2(0);
     setGamePlaying(true);
     setRollAndHoldActive(true);
+    setTitleOrWin(true);
+    setSubTitleActive(false);
   };
 
   // Return the HTML
@@ -83,7 +85,10 @@ function App() {
         <button className="btn-new" onClick={newGameFunction}>
           New game
         </button>
-        <h1>Pig Game</h1>
+        <Title
+          titleOrWinClass={titleOrWin}
+          subTitleActiveClass={subTitleActive}
+        />
         <div className="rollingScoreBox">
           <PlayerPanel
             playerNumber="1"
@@ -111,12 +116,3 @@ function App() {
 }
 
 export default App;
-
-// Bring the Pig Game into this and turn it into a React app
-
-// Background = app
-// Heading    = app
-// Player panel = component
-// Dice       = component
-// New game button = app?
-// Roll button =  app?
