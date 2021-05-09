@@ -28,16 +28,19 @@ function App() {
   // Die rolling function
   const rollFunction = () => {
     if (gamePlaying) {
-      setDieNumber1(Math.floor(Math.random() * 6) + 1);
-      setDieNumber2(Math.floor(Math.random() * 6) + 1);
+      const diceOne = Math.floor(Math.random() * 6) + 1;
+      const diceTwo = Math.floor(Math.random() * 6) + 1;
+      setDieNumber1(diceOne);
+      setDieNumber2(diceTwo);
+
       console.log(dieNumber1 + dieNumber2);
 
       // Update current score
-      if (dieNumber1 !== 1 && dieNumber2 !== 1) {
-        setCurrentScore(currentScore + dieNumber1 + dieNumber2);
-      } else {
+      if (diceOne === 1 || diceTwo === 1) {
         nextPlayer();
         setCurrentScore(0);
+      } else {
+        setCurrentScore(currentScore + diceOne + diceTwo);
       }
     }
   };
@@ -46,7 +49,6 @@ function App() {
   const nextPlayer = () => {
     setActivePlayerOne(!activePlayerOne);
     setCurrentScore(0);
-    console.log(activePlayerOne);
   };
 
   // Hold button function
