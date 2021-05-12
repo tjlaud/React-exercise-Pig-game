@@ -19,6 +19,13 @@ function App() {
   const [titleOrWin, setTitleOrWin] = useState(true);
   const [subTitleActive, setSubTitleActive] = useState(true);
 
+  //  Tilt Options for die. Passed as props to enable changes on roll
+  const tiltOptions = {
+    max: 20,
+    scale: 1.05,
+    reset: true,
+  };
+
   // ************************** To do **************************
   // Current score still display the last roll NOT the current :(
 
@@ -84,7 +91,11 @@ function App() {
   return (
     <div className="App">
       <div className="gameBox">
-        <button className="btn-new" onClick={newGameFunction}>
+        <button
+          data-tilt-reset="false"
+          className="btn-new"
+          onClick={newGameFunction}
+        >
           New game
         </button>
         <Title
@@ -98,8 +109,8 @@ function App() {
             currentScore={activePlayerOne ? currentScore : null}
             totalScore1={totalScore1}
           />
-          <Dice dieNumber={dieNumber1} />
-          <Dice dieNumber={dieNumber2} />
+          <Dice dieNumber={dieNumber1} tiltOptions={tiltOptions} />
+          <Dice dieNumber={dieNumber2} tiltOptions={tiltOptions} />
           <PlayerPanel
             playerNumber="2"
             activePlayerStyles={!activePlayerOne}
