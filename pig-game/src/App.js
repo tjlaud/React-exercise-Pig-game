@@ -19,16 +19,8 @@ function App() {
   const [titleOrWin, setTitleOrWin] = useState(true);
   const [subTitleActive, setSubTitleActive] = useState(true);
 
-  //  Tilt Options for die. Passed as props to enable changes on roll
-  const tiltOptions = {
-    max: 20,
-    scale: 1.05,
-    reset: true,
-  };
-
   // ************************** To do **************************
-  // Current score still display the last roll NOT the current :(
-
+  // Win state doesnt work properly
   // Title Component doesn't function yet. Sub title needs work.
   // Win state text and class changes still require work.
 
@@ -43,11 +35,11 @@ function App() {
       console.log(dieNumber1 + dieNumber2);
 
       // Update current score
-      if (diceOne === 1 || diceTwo === 1) {
+      if (diceOne !== 1 || diceTwo !== 1) {
+        setCurrentScore(currentScore + diceOne + diceTwo);
+      } else {
         nextPlayer();
         setCurrentScore(0);
-      } else {
-        setCurrentScore(currentScore + diceOne + diceTwo);
       }
     }
   };
@@ -70,6 +62,8 @@ function App() {
         // set game playing to false
         // create win state
         console.log("winner");
+        console.log("total score 1 = " + totalScore1);
+        console.log("total score 2 = " + totalScore2);
         setTitleOrWin(false);
       }
     }
@@ -109,8 +103,8 @@ function App() {
             currentScore={activePlayerOne ? currentScore : null}
             totalScore1={totalScore1}
           />
-          <Dice dieNumber={dieNumber1} tiltOptions={tiltOptions} />
-          <Dice dieNumber={dieNumber2} tiltOptions={tiltOptions} />
+          <Dice dieNumber={dieNumber1} />
+          <Dice dieNumber={dieNumber2} />
           <PlayerPanel
             playerNumber="2"
             activePlayerStyles={!activePlayerOne}

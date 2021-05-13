@@ -3,12 +3,17 @@ import "../App.css";
 
 function Title(props) {
   const handleClassName = (bool) => {
-    return bool === true ? "h1" : "h2";
+    return bool === true ? "title" : "titleWin";
+  };
+  const handleTextChange = (bool) => {
+    return bool === true ? "pigGame" : "Winner!!!";
   };
 
   return (
     <div>
-      <h1 className={handleClassName(props.titleOrWinClass)}>pigGame</h1>
+      <h1 className={handleClassName(props.titleOrWinClass)}>
+        {handleTextChange(props.titleOrWinClass)}
+      </h1>
       <h2 className={handleClassName(props.subTitleActiveClass)}>
         {() => {
           return props.subTitleActiveClass === true

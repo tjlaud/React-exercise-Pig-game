@@ -24,6 +24,11 @@ h2 {
   font-size: 1.1em;
 }
 
+.title {
+  color: rgb(255, 0, 0);
+  font-size: 1.1em;
+}
+
 .rollingScoreBox {
   display: flex;
   flex-direction: row;

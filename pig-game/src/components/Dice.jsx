@@ -9,12 +9,18 @@ import die5 from "../images/dice-5.png";
 import die6 from "../images/dice-6.png";
 
 function Dice(props) {
+  // **** Tilt Effect ****
   const tiltRef = useRef();
-
+  const tiltOptions = {
+    max: 20,
+    scale: 1.05,
+    reset: true,
+  };
   useEffect(() => {
-    VanillaTilt.init(tiltRef.current, props.tiltOptions);
-  }, [props.tiltOptions]);
+    VanillaTilt.init(tiltRef.current, tiltOptions);
+  }, [tiltOptions]);
 
+  // **** Array of Die images ****
   const dieObject = ["empty", die1, die2, die3, die4, die5, die6];
 
   const handleChange = (objectNumber) => {
@@ -30,6 +36,3 @@ function Dice(props) {
 }
 
 export default Dice;
-
-// console.log(dieString);
-// console.log(typeof dieString);
