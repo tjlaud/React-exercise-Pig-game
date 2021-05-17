@@ -20,7 +20,6 @@ function App() {
   const [subTitleActive, setSubTitleActive] = useState(true);
 
   // ************************** To do **************************
-  // Win state doesnt work properly
   // Title Component doesn't function yet. Sub title needs work.
   // Win state text and class changes still require work.
 
@@ -53,18 +52,20 @@ function App() {
   // Hold button function
   const holdFunction = () => {
     if (gamePlaying) {
+      const runningTotalOne = currentScore + totalScore1;
+      const runningTotalTwo = currentScore + totalScore2;
       activePlayerOne
-        ? setTotalScore1(currentScore + totalScore1)
-        : setTotalScore2(currentScore + totalScore2);
-      nextPlayer();
-      // Win function
-      if (totalScore1 || totalScore2 > 30) {
+        ? setTotalScore1(runningTotalOne)
+        : setTotalScore2(runningTotalTwo);
+      // checkWin();
+      if (runningTotalOne > 30 || runningTotalTwo > 30) {
         // set game playing to false
         // create win state
-        console.log("winner");
         console.log("total score 1 = " + totalScore1);
         console.log("total score 2 = " + totalScore2);
         setTitleOrWin(false);
+      } else {
+        nextPlayer();
       }
     }
   };
