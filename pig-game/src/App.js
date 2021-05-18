@@ -64,6 +64,7 @@ function App() {
         console.log("total score 1 = " + totalScore1);
         console.log("total score 2 = " + totalScore2);
         setTitleOrWin(false);
+        setGamePlaying(false);
       } else {
         nextPlayer();
       }
@@ -114,7 +115,7 @@ function App() {
           />
         </div>
         <RollandHold
-          rollAndHoldClass={rollAndHoldActive}
+          rollAndHoldClass={gamePlaying}
           rollFunction={rollFunction}
           holdFunction={holdFunction}
         />

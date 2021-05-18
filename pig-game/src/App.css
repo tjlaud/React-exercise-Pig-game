@@ -72,6 +72,7 @@ h2 {
   border-radius: 20px;
   border-style: none;
   box-shadow: 4px 4px 10px #2d252e4d;
+  transition-duration: 0.4s;
 }
 
 .dice {
