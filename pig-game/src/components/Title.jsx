@@ -8,18 +8,22 @@ function Title(props) {
   const handleTextChange = (bool) => {
     return bool === true ? "pigGame" : "Winner!!!";
   };
+  const handleSubTitleClassName = (bool) => {
+    return bool === true ? "subTitle" : "subTitleHidden";
+  };
+  // const handleSubTitleChange = (bool) => {
+  //   return bool === true
+  //     ? "Press New Game to start. First to 30 wins!"
+  //     : " False ";
+  // };
 
   return (
-    <div>
+    <div className="titles">
       <h1 className={handleClassName(props.titleOrWinClass)}>
         {handleTextChange(props.titleOrWinClass)}
       </h1>
-      <h2 className={handleClassName(props.subTitleActiveClass)}>
-        {() => {
-          return props.subTitleActiveClass === true
-            ? "Press New Game to start. First to 30 wins!"
-            : " False ";
-        }}
+      <h2 className={handleSubTitleClassName(props.subTitleActiveClass)}>
+        Press New Game to start. First to 30 wins.
       </h2>
     </div>
   );

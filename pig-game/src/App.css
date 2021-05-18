@@ -15,18 +15,31 @@
   padding-bottom: 2em;
 }
 
-h1 {
-  color: rgb(98, 98, 98);
-}
-
-h2 {
-  color: rgb(98, 98, 98);
-  font-size: 1.1em;
+.titles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .title {
   color: rgb(231, 77, 77);
   font-size: 1.2em;
+}
+
+.titleWin {
+  color: rgb(231, 77, 77);
+  font-size: 1.6em;
+  transition-duration: 0.3s;
+}
+
+.subTitle {
+  color: rgb(98, 98, 98);
+  font-size: 1.1em;
+}
+
+.subTitleHidden {
+  color: rgb(255, 255, 255);
+  transition-duration: 0.7s;
 }
 
 .rollingScoreBox {

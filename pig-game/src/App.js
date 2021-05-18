@@ -15,13 +15,12 @@ function App() {
   const [totalScore2, setTotalScore2] = useState(0);
   const [activePlayerOne, setActivePlayerOne] = useState(true);
   const [gamePlaying, setGamePlaying] = useState(false);
-  const [rollAndHoldActive, setRollAndHoldActive] = useState(false);
   const [titleOrWin, setTitleOrWin] = useState(true);
   const [subTitleActive, setSubTitleActive] = useState(true);
 
   // ************************** To do **************************
-  // Title Component doesn't function yet. Sub title needs work.
-  // Win state text and class changes still require work.
+  // Add funky graphics to the Win!
+  // Make the winner title read out which player has won.
 
   // Die rolling function
   const rollFunction = () => {
@@ -34,11 +33,11 @@ function App() {
       console.log(dieNumber1 + dieNumber2);
 
       // Update current score
-      if (diceOne !== 1 || diceTwo !== 1) {
-        setCurrentScore(currentScore + diceOne + diceTwo);
-      } else {
+      if (diceOne === 1 || diceTwo === 1) {
         nextPlayer();
         setCurrentScore(0);
+      } else {
+        setCurrentScore(currentScore + diceOne + diceTwo);
       }
     }
   };
@@ -78,7 +77,6 @@ function App() {
     setTotalScore1(0);
     setTotalScore2(0);
     setGamePlaying(true);
-    setRollAndHoldActive(true);
     setTitleOrWin(true);
     setSubTitleActive(false);
   };
