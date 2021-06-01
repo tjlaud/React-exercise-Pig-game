@@ -17,10 +17,11 @@ function App() {
   const [gamePlaying, setGamePlaying] = useState(false);
   const [titleOrWin, setTitleOrWin] = useState(true);
   const [subTitleActive, setSubTitleActive] = useState(true);
+  const [winningPlayer, setWinningPlayer] = useState(" ");
 
   // ************************** To do **************************
+  // Total Score and running total don't work.
   // Add funky graphics to the Win!
-  // Make the winner title read out which player has won.
 
   // Die rolling function
   const rollFunction = () => {
@@ -56,14 +57,15 @@ function App() {
       activePlayerOne
         ? setTotalScore1(runningTotalOne)
         : setTotalScore2(runningTotalTwo);
-      // checkWin();
+      // check Winner.
+      // set game playing to false
+      // create win state (by setting Title or Win to false)
       if (runningTotalOne > 30 || runningTotalTwo > 30) {
-        // set game playing to false
-        // create win state
-        console.log("total score 1 = " + totalScore1);
-        console.log("total score 2 = " + totalScore2);
         setTitleOrWin(false);
         setGamePlaying(false);
+        runningTotalOne > 30
+          ? setWinningPlayer("one")
+          : setWinningPlayer("two");
       } else {
         nextPlayer();
       }
@@ -95,6 +97,7 @@ function App() {
         <Title
           titleOrWinClass={titleOrWin}
           subTitleActiveClass={subTitleActive}
+          winningPlayer={winningPlayer}
         />
         <div className="rollingScoreBox">
           <PlayerPanel
