@@ -6,9 +6,7 @@ function Title(props) {
     return bool === true ? "title" : "titleWin";
   };
   const handleTextChange = (bool) => {
-    return bool === true
-      ? "pigGame"
-      : "Player " + props.winningPlayer + " Wins!!!";
+    return bool === true ? "pigGame" : "Winner!!!";
   };
   const handleSubTitleClassName = (bool) => {
     return bool === true ? "subTitle" : "subTitleHidden";
