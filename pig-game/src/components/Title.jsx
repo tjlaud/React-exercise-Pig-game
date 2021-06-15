@@ -5,8 +5,8 @@ function Title(props) {
   const handleClassName = (bool) => {
     return bool === true ? "title" : "titleWin";
   };
-  const handleTextChange = (bool) => {
-    return bool === true ? "pigGame" : "Winner!!!";
+  const handleTextChange = (bool, text) => {
+    return bool === true ? "pigGame" : text;
   };
   const handleSubTitleClassName = (bool) => {
     return bool === true ? "subTitle" : "subTitleHidden";
@@ -20,7 +20,7 @@ function Title(props) {
   return (
     <div className="titles">
       <h1 className={handleClassName(props.titleOrWinClass)}>
-        {handleTextChange(props.titleOrWinClass)}
+        {handleTextChange(props.titleOrWinClass, props.setWinnerTitleText)}
       </h1>
       <h2 className={handleSubTitleClassName(props.subTitleActiveClass)}>
         Press New Game to start. First to 30 wins.

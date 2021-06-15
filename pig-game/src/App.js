@@ -58,7 +58,8 @@ function App() {
       setTotalScore1(runningTotal);
       if (runningTotal >= 30) {
         setGamePlaying(false);
-        setWinnerTitle("P1");
+        setTitleOrWin(false);
+        setWinnerTitle("Player One Wins!");
       } else {
         nextPlayer();
       }
@@ -67,7 +68,8 @@ function App() {
       setTotalScore2(runningTotal);
       if (runningTotal >= 30) {
         setGamePlaying(false);
-        setWinnerTitle("P2");
+        setTitleOrWin(false);
+        setWinnerTitle("Player Two Wins!");
       } else {
         nextPlayer();
       }
@@ -99,6 +101,7 @@ function App() {
         <Title
           titleOrWinClass={titleOrWin}
           subTitleActiveClass={subTitleActive}
+          setWinnerTitleText={winnerTitle}
         />
         <div className="rollingScoreBox">
           <PlayerPanel
