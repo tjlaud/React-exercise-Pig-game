@@ -22,23 +22,30 @@ function App() {
   // ************************** To do **************************
   // Total Score and running total don't work.
   // Add funky graphics to the Win!
+  const diceOne = Math.floor(Math.random() * 6) + 1;
+  const diceTwo = Math.floor(Math.random() * 6) + 1;
+  let turnScore = 0;
+  const updateTurnScore = (one, two, three) => {
+    return (turnScore = one + two + three);
+  };
 
   // Die rolling function
   const rollFunction = () => {
     if (gamePlaying) {
-      const diceOne = Math.floor(Math.random() * 6) + 1;
-      const diceTwo = Math.floor(Math.random() * 6) + 1;
       setDieNumber1(diceOne);
       setDieNumber2(diceTwo);
 
-      console.log(dieNumber1 + dieNumber2);
+      console.log("turn score = " + turnScore);
 
       // Update current score
       if (diceOne === 1 || diceTwo === 1) {
         nextPlayer();
         setCurrentScore(0);
+        turnScore = 0;
       } else {
-        setCurrentScore(currentScore + diceOne + diceTwo);
+        updateTurnScore(turnScore, diceOne, diceTwo);
+        setCurrentScore(turnScore);
+        console.log("current score = " + currentScore);
       }
     }
   };
@@ -52,15 +59,18 @@ function App() {
   // Hold button function
   const holdFunction = () => {
     if (gamePlaying) {
-      const runningTotalOne = currentScore + totalScore1;
-      const runningTotalTwo = currentScore + totalScore2;
+      const runningTotalOne = turnScore + totalScore1;
+      const runningTotalTwo = turnScore + totalScore2;
+      console.log("hold turn score = " + turnScore);
+      console.log("running total two " + runningTotalOne);
+
       activePlayerOne
-        ? setTotalScore1(runningTotalOne)
-        : setTotalScore2(runningTotalTwo);
+        ? setTotalScore1(turnScore)
+        : setTotalScore2(totalScore2 + turnScore);
       // check Winner.
       // set game playing to false
       // create win state (by setting Title or Win to false)
-      if (runningTotalOne > 30 || runningTotalTwo > 30) {
+      if (totalScore1 > 30 || totalScore2 > 30) {
         setTitleOrWin(false);
         setGamePlaying(false);
         runningTotalOne > 30
