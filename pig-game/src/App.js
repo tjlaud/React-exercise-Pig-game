@@ -24,6 +24,7 @@ function App() {
   // Add funky graphics to the Win!
   // Make the winner title read out which player has won.
   let inPlayScore = 0;
+  let runningTotal = 0;
 
   // Die rolling function
   const rollFunction = () => {
@@ -53,27 +54,52 @@ function App() {
   // Hold button function
   const holdFunction = () => {
     if (gamePlaying) {
-      const runningTotalOne = currentScore + totalScore1;
-      const runningTotalTwo = currentScore + totalScore2;
-      activePlayerOne
-        ? setTotalScore1(runningTotalOne)
-        : setTotalScore2(runningTotalTwo);
+      if (activePlayerOne) {
+        runningTotal = currentScore + totalScore1;
+        setTotalScore1(runningTotal);
+      } else {
+        runningTotal = currentScore + totalScore2;
+        setTotalScore2(runningTotal);
+      }
 
-      // checkWin();
-      if (totalScore1 > 30) {
-        // set game playing to false
-        // create win state
-        setTitleOrWin(false);
+      // check if active player is winner
+      if (totalScore1 >= 30) {
+        console.log("Player one wins");
         setGamePlaying(false);
-        setWinnerTitle("Player One");
-      } else if (totalScore2 > 30) {
-        setTitleOrWin(false);
+      } else if (totalScore2 >= 30) {
+        console.log("player 2 wins");
         setGamePlaying(false);
-        setWinnerTitle("Player Two");
       } else {
         nextPlayer();
       }
+
+      // else nextplayer()
     }
+
+    // runningTotalOne = currentScore + totalScore1;
+    // runningTotalTwo = currentScore + totalScore2;
+
+    // if (gamePlaying) {
+
+    //   activePlayerOne
+    //   ? setTotalScore1(runningTotalOne)
+    //   : setTotalScore2(runningTotalTwo);
+    //   // checkWin();
+    //   if (totalScore1 > 30) {
+    //     // set game playing to false
+    //     // create win state
+    //     setTitleOrWin(false);
+    //     setGamePlaying(false);
+    //     setWinnerTitle("Player One");
+    //   } else if (totalScore2 > 30) {
+    //     setTitleOrWin(false);
+    //     setGamePlaying(false);
+    //     setWinnerTitle("Player Two");
+    //   } else {
+    //     nextPlayer();
+
+    //   }
+    // }
   };
 
   // New game function
