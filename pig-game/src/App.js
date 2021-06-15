@@ -17,26 +17,29 @@ function App() {
   const [gamePlaying, setGamePlaying] = useState(false);
   const [titleOrWin, setTitleOrWin] = useState(true);
   const [subTitleActive, setSubTitleActive] = useState(true);
+  const [winnerTitle, setWinnerTitle] = useState(" ");
 
   // ************************** To do **************************
+  // !!!!!!!!!!!!Running total is fucked. Fix it!!!!!!!!!
   // Add funky graphics to the Win!
   // Make the winner title read out which player has won.
+
   // Die rolling function
   const rollFunction = () => {
     if (gamePlaying) {
       const diceOne = Math.floor(Math.random() * 6) + 1;
       const diceTwo = Math.floor(Math.random() * 6) + 1;
+      let inPlayScore = 0;
       setDieNumber1(diceOne);
       setDieNumber2(diceTwo);
-
-      console.log(dieNumber1 + dieNumber2);
 
       // Update current score
       if (diceOne === 1 || diceTwo === 1) {
         nextPlayer();
         setCurrentScore(0);
       } else {
-        setCurrentScore(currentScore + diceOne + diceTwo);
+        inPlayScore = inPlayScore + diceOne + diceTwo;
+        setCurrentScore(inPlayScore);
       }
     }
   };
@@ -53,37 +56,20 @@ function App() {
       const runningTotalOne = currentScore + totalScore1;
       const runningTotalTwo = currentScore + totalScore2;
       activePlayerOne
-
-      
         ? setTotalScore1(runningTotalOne)
         : setTotalScore2(runningTotalTwo);
+
       // checkWin();
-      if (runningTotalOne > 30 || runningTotalTwo > 30) {
+      if (totalScore1 > 30) {
         // set game playing to false
         // create win state
-        console.log("total score 1 = " + totalScore1);
-        console.log("total score 2 = " + totalScore2);
-
-        
-
-        // ? setTotalScore1(runningTotalOne)
-        // : setTotalScore2(runningTotalTwo);
-      // check Winner.
-      // set game playing to false
-      // create win state (by setting Title or Win to false)
-      if (runningTotalOne > 30 || runningTotalTwo > 30) {
-
-
-        ? setTotalScore1(runningTotalOne)
-        : setTotalScore2(runningTotalTwo);
-      // check Winner.
-      // set game playing to false
-      // create win state (by setting Title or Win to false)
-      if (runningTotalOne > 30 || runningTotalTwo > 30) {
-
-        
         setTitleOrWin(false);
         setGamePlaying(false);
+        setWinnerTitle("Player One");
+      } else if (totalScore2 > 30) {
+        setTitleOrWin(false);
+        setGamePlaying(false);
+        setWinnerTitle("Player Two");
       } else {
         nextPlayer();
       }
