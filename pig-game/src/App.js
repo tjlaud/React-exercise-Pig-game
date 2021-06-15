@@ -20,20 +20,7 @@ function App() {
 
   // ************************** To do **************************
   // Add funky graphics to the Win!
-<<<<<<< HEAD
-<<<<<<< HEAD
-  const diceOne = Math.floor(Math.random() * 6) + 1;
-  const diceTwo = Math.floor(Math.random() * 6) + 1;
-  let turnScore = 0;
-  const updateTurnScore = (one, two, three) => {
-    return (turnScore = one + two + three);
-  };
-=======
   // Make the winner title read out which player has won.
->>>>>>> parent of 8259841 (win state update)
-=======
->>>>>>> parent of 7982747 (Update App.js)
-
   // Die rolling function
   const rollFunction = () => {
     if (gamePlaying) {
@@ -66,15 +53,8 @@ function App() {
       const runningTotalOne = currentScore + totalScore1;
       const runningTotalTwo = currentScore + totalScore2;
       activePlayerOne
-<<<<<<< HEAD
-<<<<<<< HEAD
-        ? setTotalScore1(turnScore)
-        : setTotalScore2(totalScore2 + turnScore);
-      // check Winner.
-      // set game playing to false
-      // create win state (by setting Title or Win to false)
-      if (totalScore1 > 30 || totalScore2 > 30) {
-=======
+
+      
         ? setTotalScore1(runningTotalOne)
         : setTotalScore2(runningTotalTwo);
       // checkWin();
@@ -83,15 +63,25 @@ function App() {
         // create win state
         console.log("total score 1 = " + totalScore1);
         console.log("total score 2 = " + totalScore2);
->>>>>>> parent of 8259841 (win state update)
-=======
+
+        
+
+        // ? setTotalScore1(runningTotalOne)
+        // : setTotalScore2(runningTotalTwo);
+      // check Winner.
+      // set game playing to false
+      // create win state (by setting Title or Win to false)
+      if (runningTotalOne > 30 || runningTotalTwo > 30) {
+
+
         ? setTotalScore1(runningTotalOne)
         : setTotalScore2(runningTotalTwo);
       // check Winner.
       // set game playing to false
       // create win state (by setting Title or Win to false)
       if (runningTotalOne > 30 || runningTotalTwo > 30) {
->>>>>>> parent of 7982747 (Update App.js)
+
+        
         setTitleOrWin(false);
         setGamePlaying(false);
       } else {
