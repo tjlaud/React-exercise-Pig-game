@@ -20,9 +20,9 @@ function App() {
   const [winnerTitle, setWinnerTitle] = useState(" ");
 
   // ************************** To do **************************
-  // !!!!!!!!!!!!Running total is fucked. Fix it!!!!!!!!!
-  // Add funky graphics to the Win!
-  // Make the winner title read out which player has won.
+
+  // Add funky graphics to the Win!!!! Confetti?!
+
   let inPlayScore = 0;
   let runningTotal = 0;
 
