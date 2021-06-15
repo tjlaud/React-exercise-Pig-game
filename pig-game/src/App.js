@@ -53,53 +53,25 @@ function App() {
 
   // Hold button function
   const holdFunction = () => {
-    if (gamePlaying) {
-      if (activePlayerOne) {
-        runningTotal = currentScore + totalScore1;
-        setTotalScore1(runningTotal);
-      } else {
-        runningTotal = currentScore + totalScore2;
-        setTotalScore2(runningTotal);
-      }
-
-      // check if active player is winner
-      if (totalScore1 >= 30) {
-        console.log("Player one wins");
+    if (activePlayerOne) {
+      runningTotal = currentScore + totalScore1;
+      setTotalScore1(runningTotal);
+      if (runningTotal >= 30) {
         setGamePlaying(false);
-      } else if (totalScore2 >= 30) {
-        console.log("player 2 wins");
-        setGamePlaying(false);
+        setWinnerTitle("P1");
       } else {
         nextPlayer();
       }
-
-      // else nextplayer()
+    } else {
+      runningTotal = currentScore + totalScore2;
+      setTotalScore2(runningTotal);
+      if (runningTotal >= 30) {
+        setGamePlaying(false);
+        setWinnerTitle("P2");
+      } else {
+        nextPlayer();
+      }
     }
-
-    // runningTotalOne = currentScore + totalScore1;
-    // runningTotalTwo = currentScore + totalScore2;
-
-    // if (gamePlaying) {
-
-    //   activePlayerOne
-    //   ? setTotalScore1(runningTotalOne)
-    //   : setTotalScore2(runningTotalTwo);
-    //   // checkWin();
-    //   if (totalScore1 > 30) {
-    //     // set game playing to false
-    //     // create win state
-    //     setTitleOrWin(false);
-    //     setGamePlaying(false);
-    //     setWinnerTitle("Player One");
-    //   } else if (totalScore2 > 30) {
-    //     setTitleOrWin(false);
-    //     setGamePlaying(false);
-    //     setWinnerTitle("Player Two");
-    //   } else {
-    //     nextPlayer();
-
-    //   }
-    // }
   };
 
   // New game function
