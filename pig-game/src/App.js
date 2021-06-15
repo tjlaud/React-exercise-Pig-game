@@ -21,6 +21,7 @@ function App() {
   // ************************** To do **************************
   // Add funky graphics to the Win!
 <<<<<<< HEAD
+<<<<<<< HEAD
   const diceOne = Math.floor(Math.random() * 6) + 1;
   const diceTwo = Math.floor(Math.random() * 6) + 1;
   let turnScore = 0;
@@ -30,24 +31,25 @@ function App() {
 =======
   // Make the winner title read out which player has won.
 >>>>>>> parent of 8259841 (win state update)
+=======
+>>>>>>> parent of 7982747 (Update App.js)
 
   // Die rolling function
   const rollFunction = () => {
     if (gamePlaying) {
+      const diceOne = Math.floor(Math.random() * 6) + 1;
+      const diceTwo = Math.floor(Math.random() * 6) + 1;
       setDieNumber1(diceOne);
       setDieNumber2(diceTwo);
 
-      console.log("turn score = " + turnScore);
+      console.log(dieNumber1 + dieNumber2);
 
       // Update current score
       if (diceOne === 1 || diceTwo === 1) {
         nextPlayer();
         setCurrentScore(0);
-        turnScore = 0;
       } else {
-        updateTurnScore(turnScore, diceOne, diceTwo);
-        setCurrentScore(turnScore);
-        console.log("current score = " + currentScore);
+        setCurrentScore(currentScore + diceOne + diceTwo);
       }
     }
   };
@@ -61,12 +63,10 @@ function App() {
   // Hold button function
   const holdFunction = () => {
     if (gamePlaying) {
-      const runningTotalOne = turnScore + totalScore1;
-      const runningTotalTwo = turnScore + totalScore2;
-      console.log("hold turn score = " + turnScore);
-      console.log("running total two " + runningTotalOne);
-
+      const runningTotalOne = currentScore + totalScore1;
+      const runningTotalTwo = currentScore + totalScore2;
       activePlayerOne
+<<<<<<< HEAD
 <<<<<<< HEAD
         ? setTotalScore1(turnScore)
         : setTotalScore2(totalScore2 + turnScore);
@@ -84,6 +84,14 @@ function App() {
         console.log("total score 1 = " + totalScore1);
         console.log("total score 2 = " + totalScore2);
 >>>>>>> parent of 8259841 (win state update)
+=======
+        ? setTotalScore1(runningTotalOne)
+        : setTotalScore2(runningTotalTwo);
+      // check Winner.
+      // set game playing to false
+      // create win state (by setting Title or Win to false)
+      if (runningTotalOne > 30 || runningTotalTwo > 30) {
+>>>>>>> parent of 7982747 (Update App.js)
         setTitleOrWin(false);
         setGamePlaying(false);
       } else {
