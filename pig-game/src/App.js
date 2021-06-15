@@ -23,13 +23,13 @@ function App() {
   // !!!!!!!!!!!!Running total is fucked. Fix it!!!!!!!!!
   // Add funky graphics to the Win!
   // Make the winner title read out which player has won.
+  let inPlayScore = 0;
 
   // Die rolling function
   const rollFunction = () => {
     if (gamePlaying) {
       const diceOne = Math.floor(Math.random() * 6) + 1;
       const diceTwo = Math.floor(Math.random() * 6) + 1;
-      let inPlayScore = 0;
       setDieNumber1(diceOne);
       setDieNumber2(diceTwo);
 
@@ -38,7 +38,7 @@ function App() {
         nextPlayer();
         setCurrentScore(0);
       } else {
-        inPlayScore = inPlayScore + diceOne + diceTwo;
+        inPlayScore = currentScore + diceOne + diceTwo;
         setCurrentScore(inPlayScore);
       }
     }
