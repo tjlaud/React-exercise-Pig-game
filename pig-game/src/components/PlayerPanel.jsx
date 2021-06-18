@@ -9,10 +9,11 @@ function PlayerPanel(props) {
   return (
     <div className={handleClassName(props.activePlayerStyles)}>
       <h2>Player {props.playerNumber}</h2>
-      <h2>Current: {props.currentScore}</h2>
-      <div>
-        <h2>{props.totalScore1}</h2>
-        <h2>{props.totalScore2}</h2>
+      <h3>Current: {props.currentScore}</h3>
+      <div className={"totalScore"}>
+        <h3>Total Score:&nbsp; </h3>
+        <h3>{props.totalScore1}</h3>
+        <h3>{props.totalScore2}</h3>
       </div>
     </div>
   );

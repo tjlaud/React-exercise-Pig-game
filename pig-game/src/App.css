@@ -125,15 +125,26 @@
   align-items: center;
   width: 100%;
   height: 100%;
-  padding: 20px;
+  padding: 5px;
 }
 
 .playerBoxActive {
-  transition-duration: 0.3s;
+  transition-duration: 0.7s;
   color: rgb(231, 77, 77);
+  background: rgb(231, 77, 77);
+  background: radial-gradient(
+    circle,
+    rgba(231, 77, 77, 0.2) 0%,
+    rgba(255, 255, 255, 0) 46%
+  );
 }
 
 .playerBoxInactive {
-  transition-duration: 0.5s;
+  transition-duration: 0.3s;
   color: rgb(98, 98, 98);
+}
+
+.totalScore {
+  display: flex;
+  padding-right: 1px;
 }
