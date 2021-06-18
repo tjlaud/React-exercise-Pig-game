@@ -22,6 +22,7 @@ function Title(props) {
       <h1 className={handleClassName(props.titleOrWinClass)}>
         {handleTextChange(props.titleOrWinClass, props.setWinnerTitleText)}
       </h1>
+
       <h2 className={handleSubTitleClassName(props.subTitleActiveClass)}>
         Press New Game to start. First to 30 wins.
       </h2>

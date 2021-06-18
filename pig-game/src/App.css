@@ -29,7 +29,26 @@
 .titleWin {
   color: rgb(231, 77, 77);
   font-size: 1.6em;
-  transition-duration: 0.3s;
+  /* transition-duration: 0.3s; */
+  animation: pulse 2s;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.7);
+  }
+  30% {
+    transform: scale(1.4);
+  }
+  75% {
+    transform: scale(1.6);
+  }
+  83% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .subTitle {
