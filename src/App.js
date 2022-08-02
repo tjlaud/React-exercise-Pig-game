@@ -6,8 +6,6 @@ import RollandHold from "./components/RollandHold";
 import Title from "./components/Title";
 
 function App() {
-  // const [playerOneStyles, setPlayerOneStyles] = useState("playerOneBox");
-  // const [playerTwoStyles, setPlayerTwoStyles] = useState("playerTwoBox");
   const [dieNumber1, setDieNumber1] = useState(2);
   const [dieNumber2, setDieNumber2] = useState(2);
   const [currentScore, setCurrentScore] = useState(0);
@@ -18,10 +16,6 @@ function App() {
   const [titleOrWin, setTitleOrWin] = useState(true);
   const [subTitleActive, setSubTitleActive] = useState(true);
   const [winnerTitle, setWinnerTitle] = useState(" ");
-
-  // ************************** To do **************************
-
-  // Add funky graphics to the Win!!!! Confetti?!
 
   let inPlayScore = 0;
   let runningTotal = 0;
